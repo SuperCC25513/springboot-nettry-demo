@@ -3,6 +3,7 @@ package com.juesecc.websocket.ioNetty;/**
  * @create
  */
 
+import org.springframework.beans.factory.wiring.BeanWiringInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 /**
@@ -26,7 +29,12 @@ public class IndexController {
     public ModelAndView  index(){
         ModelAndView mav=new ModelAndView("socket");
         Random random = new Random();
-        mav.addObject("uid",  random.nextInt(10));
+        Map<Integer, String> map = new HashMap<>();
+        map.put(0,"MTY=");
+        mav.addObject("uid",  map.get(0));
+//                map.put(1,"Mg==");
+//        mav.addObject("uid",  map.get(random.nextInt(2)));
+//        random.nextInt(10)
         return mav;
     }
 
